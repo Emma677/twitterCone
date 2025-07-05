@@ -6,8 +6,8 @@ import { connectDB } from './config/db.js';
 
 const app = express();
 
-connectDB()
+connectDB() 
 
 app.get("/",(req,res)=> res.send('testing...'))
 
-app.listen(ENV.PORT,() => console.log(`servers is running on port ${ENV.PORT}`))
+app.listen(ENV.PORT,() => console.log(`servers is running on port ${ENV.PORT}`))  
