@@ -30,6 +30,7 @@ export const createComment = asyncHandler(async (req,res)=>{
     const post = await Post.findById(postId)
 
     if(!user || !post) return res.status(404).json({error: "User or post not found"})
+        
 
         // create comment
     const comment = await Comment.create({
