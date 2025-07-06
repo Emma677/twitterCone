@@ -1,13 +1,25 @@
 import express from 'express';
-import mongoose from 'mongoose';
+import cors from "cors"
 import { ENV } from './config/env.js';
 import { connectDB } from './config/db.js';
 
+// the import below handles authentication
+import {clerkMiddleware} from "@clerk/express"
+
+// routes
+import userRoutes from "./routes/user.route.js"
 
 const app = express();
 
-connectDB() 
+app.use(cors())
+app.use(express.json())
+
+app.use(clerkMiddleware())
+
 
 app.get("/",(req,res)=> res.send('testing...'))
 
+app.use("/api/users",userRoutes)
+
+connectDB() 
 app.listen(ENV.PORT,() => console.log(`servers is running on port ${ENV.PORT}`))  
