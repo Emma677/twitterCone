@@ -19,7 +19,7 @@ app.use(cors())
 app.use(express.json())
 
 app.use(clerkMiddleware()) 
-app.use(arcjetMiddleware)
+app.use(arcjetMiddleware) 
 
 
 app.get("/",(req,res)=> res.send('testing...'))
@@ -35,8 +35,20 @@ app.use((err,req,res)=>{
     res.status(500).json({error: err.message || 'internal server error'})
 })
 
-connectDB() 
 
-if(ENV.NODE_ENV !== 'production'){
+const startServer = async () =>{
+    try {
+        await connectDB() 
+        if(ENV.NODE_ENV !== 'production'){
     app.listen(ENV.PORT,() => console.log(`servers is running on port ${ENV.PORT}`))  
 }
+    } catch (error) {
+        console.error("failed to start server", error.message)
+        process.exit(1)
+    }
+}
+
+startServer()
+
+
+export default app
