@@ -36,4 +36,7 @@ app.use((err,req,res)=>{
 })
 
 connectDB() 
-app.listen(ENV.PORT,() => console.log(`servers is running on port ${ENV.PORT}`))  
+
+if(ENV.NODE_ENV !== 'production'){
+    app.listen(ENV.PORT,() => console.log(`servers is running on port ${ENV.PORT}`))  
+}
