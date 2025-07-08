@@ -1,10 +1,15 @@
-import { View, Text } from 'react-native'
+import { View, Text, Button } from 'react-native'
 import React from 'react'
+import { useClerk } from '@clerk/clerk-expo'
 
 const index = () => {
+  const {signOut} = useClerk()
   return (
-    <View className='bg-white flex-1'>
-      <Text  className='text-green-300'> the index</Text>
+    <View>
+      <Text> the index</Text>
+
+      <Button onPress={()=>signOut()} title='signOut' color={'red'}/>
+       
     </View>
   )
 }
