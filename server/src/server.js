@@ -2,7 +2,7 @@ import express from 'express';
 import cors from "cors"
 import { ENV } from './config/env.js';
 import { connectDB } from './config/db.js';
-import { arcjetMiddleware } from './middleware/arcjet.middleware.js';
+// import { arcjetMiddleware } from './middleware/arcjet.middleware.js';
 
 // the import below handles authentication 
 import {clerkMiddleware} from "@clerk/express"
@@ -19,7 +19,7 @@ app.use(cors())
 app.use(express.json())
 
 app.use(clerkMiddleware()) 
-app.use(arcjetMiddleware) 
+// app.use(arcjetMiddleware) 
 
 
 app.get("/",(req,res)=> res.send('testing...'))
