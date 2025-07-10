@@ -22,7 +22,7 @@ app.use(clerkMiddleware())
 // app.use(arcjetMiddleware) 
 
 
-app.get("/",(req,res)=> res.send('testing...'))
+app.get("/",(req,res)=> res.send('testing... fwkfjbf this out to see'))
 
 app.use("/api/users",userRoutes)
 app.use("/api/posts",postRoutes)
@@ -30,14 +30,13 @@ app.use("/api/comments",commentRoutes)
 app.use("/api/notification",notificationRoutes)
 
 // error handling middleware
-app.use((err,req,res)=>{
+app.use((err,req,res,next)=>{
     console.error("Unhandled error:", err);
     res.status(500).json({error: err.message || 'internal server error'})
 })
 
-
 const startServer = async () =>{
-    try {
+    try { 
         await connectDB() 
         if(ENV.NODE_ENV !== 'production'){
     app.listen(ENV.PORT,() => console.log(`servers is running on port ${ENV.PORT}`))  
