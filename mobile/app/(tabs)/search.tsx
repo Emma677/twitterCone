@@ -1,5 +1,5 @@
 import { View, Text, ScrollView, Touchable, TouchableOpacity } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import SearchButton from '@/components/SearchButton'
 
@@ -13,9 +13,13 @@ const TrendingTopics = [
 ]
 
 const SearchScreen = () => {
+  const[tweets,setTweets] = useState("")
   return (
     <SafeAreaView style={{flex:1}}>
-      <SearchButton/>
+      <SearchButton  
+      placeholder="Search posts"
+        value={tweets}
+        onChangeText={setTweets}/>
 
       <ScrollView className='flex-1' showsVerticalScrollIndicator={false}>
         <View className='p-4'>
