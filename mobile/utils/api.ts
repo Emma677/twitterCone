@@ -1,8 +1,12 @@
 import axios, {AxiosInstance} from "axios";
 import {useAuth} from "@clerk/clerk-expo";
+// import dotenv from 'dotenv';
+
+// dotenv.config(); 
 
 
-const API_BASE_URL = "https://twitter-cone.vercel.app/api"
+// const API_BASE_URL = process.env.EXPO_PUBLIC_API_URL
+const API_BASE_URL =  "https://twitter-cone.vercel.app/api"
 
 
 export const createApiClient = (getToken: () => Promise<string | null>):AxiosInstance=>{

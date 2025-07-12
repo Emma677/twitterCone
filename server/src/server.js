@@ -19,10 +19,12 @@ app.use(cors())
 app.use(express.json())
 
 app.use(clerkMiddleware()) 
+
+// having an issue with the arcject so i have commented on it for a while
 // app.use(arcjetMiddleware) 
 
 
-app.get("/",(req,res)=> res.send('testing... fwkfjbf this out to see'))
+app.get("/",(req,res)=> res.send('testing...  this out to see'))
 
 app.use("/api/users",userRoutes)
 app.use("/api/posts",postRoutes)
